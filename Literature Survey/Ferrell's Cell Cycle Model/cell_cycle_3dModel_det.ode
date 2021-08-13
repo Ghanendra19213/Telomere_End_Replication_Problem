@@ -1,0 +1,12 @@
+par a1=0.1, b1=0.03, a2=3, b2=1, a3=3, b3=1
+par K1=0.5, K2=0.5, K3=0.5
+par n1=8, n2=8, n3=8
+
+CDK1' = a1 - b1*CDK1*APC**n1/(K1**n1 + APC**n1)
+PLK1' = a2*(1-PLK1)*CDK1**n2/(K2**n2 + CDK1**n2) - b2*PLK1
+APC' =  a3*(1-APC)*PLK1**n3/(K3**n3 + PLK1**n3) - b3*APC
+
+@ maxstor=100000,total=100,dt=.05,meth=cvode,tol=1e-5,atol=1e-5
+@ xlo=0,xhi=100,ylo=0,yhi=l
+
+done
